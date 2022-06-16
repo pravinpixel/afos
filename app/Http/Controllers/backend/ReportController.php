@@ -68,7 +68,8 @@ class ReportController extends Controller
 
             $records = Order::select('orders.created_at as date', 'orders.status as order_status', 
                         'stu.register_no',
-                        'loc.location',
+                        'loc.location_name as location','stu.board as board', 'stu.standard as class', 'stu.name as student',
+                        'order_no', 'total_price'
                         )
                     ->whereBetween(DB::raw('DATE(orders.created_at)'), array($from, $to))
                     ->join('institutions as ins', 'orders.institute_id', '=', 'ins.id')
@@ -134,9 +135,9 @@ class ReportController extends Controller
                     'date' => date('d M Y, h:i A', strtotime($row->date)),
                     'register_no' => $row->register_no,
                     'location' => $row->location,
-                    'board' => $row->student->board,
-                    'class' => $row->student->standard,
-                    'student' => $row->student->name,
+                    'board' => $row->board,
+                    'class' => $row->class,
+                    'student' => $row->student,
                     'order_no' => $row->order_no,
                     'total_price' => $row->total_price,
                     'food_type' => $food_type,
