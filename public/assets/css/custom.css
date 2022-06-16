@@ -1,0 +1,32 @@
+.set_loader {
+   
+    border: 9px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 9px solid #3498db;
+    width: 62px;
+    height: 62px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.blur {
+    filter:blur(2px);
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+label.error {color: red;}
+
+input.error {border-color: red;}
