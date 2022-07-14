@@ -14,7 +14,7 @@
                                 Pay Fees Online
                             </label>
                             <label for="Order_Food_online" class="check-box">
-                                <input type="radio" name="some" class="form-check-input" id="Order_Food_online">
+                                <input type="radio" name="some" class="form-check-input" checked id="Order_Food_online">
                                 Order Food Online
                             </label>
                             <a href="{{ route('online.student') }}">
