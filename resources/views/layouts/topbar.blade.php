@@ -11,16 +11,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="https://amalpay.in/about_us">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="order-food-online.html">Order Online</a>
+                    <a class="nav-link" href="https://eathealthy.amalpay.in/">Order Online</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pay Online</a>
+                    <a class="nav-link" href="https://amalpay.in/payonline">Pay Online</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="https://amalpay.in/contact_us">Contact</a>
                 </li> 
             </ul> 
         </div>
