@@ -13,6 +13,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Register No</th>
+                                <th>DOB</th>
                                 <th>Section</th>
                                 <th>Institute</th>
                                 <th>Grade</th>
@@ -56,6 +57,7 @@
         columns: [
             {data: 'name', name: 'name'},
             {data: 'register_no', name: 'email'},
+            {data: 'dob', name: 'email'},
             {data: 'section', name: 'section'},
             {data: 'institute', name: 'institute'},
             {data: 'standard', name: 'standard'},

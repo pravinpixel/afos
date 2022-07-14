@@ -6,12 +6,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                @if (check_user_access('users', 'editable'))
                 <div class="row mb-2">
                     <div class="col-sm-12 text-end">
                         <a href="javascript:void(0);" class="btn btn-primary mb-2" onclick="return add_modal()" id="add-user" data-id="3"><i class="mdi mdi-plus-circle me-2"></i> Add User</a>
                     </div>
-                   
                 </div>
+                @endif
 
                 <div class="table-responsive">
                     <table class="table table-centered table-borderless table-hover w-100 dt-responsive nowrap" id="user-table">

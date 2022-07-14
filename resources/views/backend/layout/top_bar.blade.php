@@ -124,13 +124,13 @@
                 <div class=" dropdown-header noti-title">
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
-
+                @if (check_user_access('settings'))
                 <!-- item-->
                 <a href="{{ route('settings') }}" class="dropdown-item notify-item">
                     <i class="mdi mdi-account-edit me-1"></i>
                     <span>Settings</span>
                 </a>
-
+                @endif
                 <!-- item-->
                
                 <a class="dropdown-item notify-item" href="{{ route('logout') }}"

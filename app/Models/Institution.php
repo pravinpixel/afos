@@ -26,9 +26,14 @@ class Institution extends Model implements Auditable
     {
         return $this->belongsTo(Location::class, 'location_id', 'id');
     }
-
     public function students() {
         return $this->hasMany(Student::class, 'institute_id', 'id');
     }
+    public function orders() {
+        return $this->hasMany(Order::class, 'institute_id', 'id');
+    }
+
+    
+
 
 }

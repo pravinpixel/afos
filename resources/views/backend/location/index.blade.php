@@ -7,11 +7,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mb-2">
+                    @if (check_user_access('locations', 'editable'))
                     <div class="col-sm-12 text-end">
                         <a href="javascript:void(0);" class="btn btn-primary mb-2" onclick="return add_modal()" id="add-location" data-id="3">
                             <i class="mdi mdi-plus-circle me-2"></i> Add Locations</a>
                     </div>
-                   
+                    @endif
                 </div>
 
                 <div class="table-responsive">

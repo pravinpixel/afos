@@ -44,6 +44,8 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 Route::prefix('backend')->middleware(['auth'])->group(function(){
 
     Route::get('/', [App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/download/list', [App\Http\Controllers\backend\DashboardController::class, 'download_list'])->name('download_list');
+    Route::post('/orders/count', [App\Http\Controllers\backend\DashboardController::class, 'get_orders_count'])->name('get_orders_count');
     
     Route::prefix('settings')->group(function(){
         Route::get('/', [App\Http\Controllers\backend\SettingController::class, 'index'])->name('settings')->middleware(['checkAccess:visible']);
@@ -55,7 +57,7 @@ Route::prefix('backend')->middleware(['auth'])->group(function(){
 
     Route::prefix('users')->group(function(){
         Route::get('/', [App\Http\Controllers\backend\UserController::class, 'index'])->name('users')->middleware(['checkAccess:visible']);
-        Route::post('/users/add', [App\Http\Controllers\backend\UserController::class, 'add_edit_modal'])->name('users.add_edit')->middleware(['checkAccess:visible']);
+        Route::post('/users/add', [App\Http\Controllers\backend\UserController::class, 'add_edit_modal'])->name('users.add_edit')->middleware(['checkAccess:editable']);
         Route::post('/users/save', [App\Http\Controllers\backend\UserController::class, 'save'])->name('users.save')->middleware(['checkAccess:editable']);
         Route::post('/users/delete', [App\Http\Controllers\backend\UserController::class, 'delete'])->name('users.delete')->middleware(['checkAccess:delete']);
         Route::post('/users/status', [App\Http\Controllers\backend\UserController::class, 'change_status'])->name('users.status')->middleware(['checkAccess:editable']);
@@ -63,7 +65,7 @@ Route::prefix('backend')->middleware(['auth'])->group(function(){
 
     Route::prefix('roles')->group(function(){
         Route::get('/', [App\Http\Controllers\backend\RoleController::class, 'index'])->name('roles')->middleware(['checkAccess:visible']);
-        Route::post('/roles/add', [App\Http\Controllers\backend\RoleController::class, 'add_edit_modal'])->name('roles.add_edit')->middleware(['checkAccess:visible']);
+        Route::post('/roles/add', [App\Http\Controllers\backend\RoleController::class, 'add_edit_modal'])->name('roles.add_edit')->middleware(['checkAccess:editable']);
         Route::post('/roles/save', [App\Http\Controllers\backend\RoleController::class, 'save'])->name('roles.save')->middleware(['checkAccess:editable']);
         Route::post('/roles/delete', [App\Http\Controllers\backend\RoleController::class, 'delete'])->name('roles.delete')->middleware(['checkAccess:delete']);
         Route::post('/roles/status', [App\Http\Controllers\backend\RoleController::class, 'change_status'])->name('roles.status')->middleware(['checkAccess:editable']);
@@ -124,6 +126,7 @@ Route::prefix('backend')->middleware(['auth'])->group(function(){
     Route::prefix('reports')->middleware(['checkAccess'])->group(function(){
         Route::get('/', [App\Http\Controllers\backend\ReportController::class, 'index'])->name('reports');
         Route::post('/', [App\Http\Controllers\backend\ReportController::class, 'get_subtypes'])->name('reports.getsubtype');
+        Route::post('/download/reports', [App\Http\Controllers\backend\ReportController::class, 'download_excel'])->name('reports.download');
     });
 
 });

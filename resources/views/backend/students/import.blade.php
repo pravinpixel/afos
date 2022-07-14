@@ -18,7 +18,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4 mt-3 pt-1">
-                                            <button type="submit" class="btn btn-primary mb-2">Import</button>
+                                            <button type="submit" id="loading" class="btn btn-primary mb-2">Import</button>
                                         </div>
                                     </div>
                                 </form>
@@ -66,12 +66,12 @@
                     contentType: false,
                     processData: false,
                     beforeSend:function(){
-                        $('#save').html('Loading...');
-                        $('#save').attr('disabled', true);
+                        $('#loading').html('Loading...');
+                        $('#loading').attr('disabled', true);
                     },
                     success: function(response) {
-                        $('#save').html('Save changes');
-                        $('#save').attr('disabled', false);
+                        $('#loading').html('Import');
+                        $('#loading').attr('disabled', false);
                         console.log( response );
                         if( response.error == 0 ) {
                             toastr.success('Success', response.message);

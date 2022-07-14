@@ -7,11 +7,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mb-2">
+                    @if (check_user_access('institutes', 'editable'))
                     <div class="col-sm-12 text-end">
                         <a href="javascript:void(0);" class="btn btn-primary mb-2" onclick="return add_modal()" id="add-user" data-id="3">
                             <i class="mdi mdi-plus-circle me-2"></i> Add Institute</a>
                     </div>
-                   
+                    @endif
                 </div>
 
                 <div class="table-responsive">

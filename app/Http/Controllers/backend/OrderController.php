@@ -44,7 +44,10 @@ class OrderController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:void(0);" class="action-icon" onclick="return view_modal('.$row->id.')"> <i class="mdi mdi-eye-outline"></i></a>';
+                    $btn = 'No Access';
+                    if (check_user_access('orders', 'visible')) {
+                        $btn = '<a href="javascript:void(0);" class="action-icon" onclick="return view_modal('.$row->id.')"> <i class="mdi mdi-eye-outline"></i></a>';
+                    }
                     return $btn;
                 })
                 ->rawColumns(['date','register_no','board', 'student','status','action'])

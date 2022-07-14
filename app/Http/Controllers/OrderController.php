@@ -40,7 +40,6 @@ class OrderController extends Controller
 
     public function get_food_info() {
         if( session()->get('order')) {
-
             // DB::enableQueryLog();
             $items = ProductCategory::with('products')->cutoff()->orderBy('order')->where('status', 1)->get();
             // dd(DB::getQueryLog());
@@ -295,6 +294,10 @@ class OrderController extends Controller
             
             $paymet_id = session()->get('order')['payment_id'];
             $info = Transaction::find($paymet_id);
+
+            $mess = "Received ";
+		
+		    $sms= sendSMS($info->order->payer_mobile_no, $info->order->student->board, $info->order );
             
             $pdf = PDF::loadView('front_end.invoice.order_invoice', compact('info'));    
             Storage::put('public/invoice_order/'.$info->order->order_no.'.pdf', $pdf->output());

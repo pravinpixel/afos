@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Student extends Model
 {
@@ -18,7 +20,8 @@ class Student extends Model
         'dob',
         'parents_name',
         'contact_no',
-        'address'
+        'address',
+        'gender'
     ];
 
     public function institute()
@@ -30,4 +33,5 @@ class Student extends Model
     {
         return $this->hasOne(Institution::class, 'institute_id', 'id');
     }
+
 }

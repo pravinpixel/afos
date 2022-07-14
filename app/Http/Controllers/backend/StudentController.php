@@ -21,6 +21,9 @@ class StudentController extends Controller
                 ->addColumn('institute', function($row){
                     return $row->institute->institute_code;
                 })
+                ->addColumn('dob', function($row){
+                    return date('d M Y', strtotime($row->dob) );
+                })
                 ->addColumn('action', function($row){
                     $btn = '<a href="javascript:void(0);" class="action-icon" onclick="return view_modal('.$row->id.')"> <i class="mdi mdi-eye-outline"></i></a>';
                     return $btn;

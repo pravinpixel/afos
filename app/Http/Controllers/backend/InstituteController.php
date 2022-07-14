@@ -23,16 +23,33 @@ class InstituteController extends Controller
                 })
                 ->addColumn('status', function($row){
                     if( $row->status == 1){
-                        $status = '<a href="javascript:void(0);" class="btn btn-success btn-sm" tooltip="Click to Inactive" onclick="return change_status('.$row->id.', 2)">Active</a>';
+                        if (check_user_access('institutes', 'editable')) {
+                            $status = '<a href="javascript:void(0);" class="btn btn-success btn-sm" tooltip="Click to Inactive" onclick="return change_status('.$row->id.', 2)">Active</a>';
+                        } else {
+                            $status = '<a href="javascript:void(0);" class="btn btn-success btn-sm" tooltip="Click to Inactive" >Active</a>';
+                        }
+                        
                     } else {
-                        $status = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" tooltip="Click to Active" onclick="return change_status('.$row->id.', 1)">Inactive</a>';
+                        if (check_user_access('institutes', 'editable')) {
+                            $status = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" tooltip="Click to Active" onclick="return change_status('.$row->id.', 1)">Inactive</a>';
+                        } else {
+                            $status = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" tooltip="Click to Active" >Inactive</a>';
+                        }
+                        
                     }
                     return $status;
                 })
                 ->addColumn('action', function($row){
-                    $btn = '<a href="javascript:void(0);" class="action-icon" onclick="return add_modal('.$row->id.')"> <i class="mdi mdi-square-edit-outline"></i></a>
-                    <a href="javascript:void(0);" class="action-icon" onclick="return delete_institute('.$row->id.')"> <i class="mdi mdi-delete"></i></a>';
-                    return $btn;
+                    $edit_btn = '<a href="javascript:void(0);" class="action-icon" > <i class="mdi mdi-square-edit-outline"></i></a>';
+                    $del_btn = '<a href="javascript:void(0);" class="action-icon" > <i class="mdi mdi-delete"></i></a>';
+                    if (check_user_access('institutes', 'editable')) {
+                        $edit_btn = '<a href="javascript:void(0);" class="action-icon" onclick="return add_modal('.$row->id.')"> <i class="mdi mdi-square-edit-outline"></i></a>';
+                    }
+                    if (check_user_access('institutes', 'delete')) {
+                        $del_btn = '<a href="javascript:void(0);" class="action-icon" onclick="return delete_institute('.$row->id.')"> <i class="mdi mdi-delete"></i></a>';
+                    }
+                   
+                    return $edit_btn.$del_btn;
                 })
                 ->rawColumns(['status','location','action'])
                 

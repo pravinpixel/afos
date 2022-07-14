@@ -14,17 +14,19 @@ class StudentImport implements ToModel,WithHeadingRow
     {
         
         $ins_info = Institution::where('institute_code', $row['board'])->first();
-         
-        return new Student([
+        $ins_arr = [
             'institute_id' => $ins_info->id ?? null,
             'board' => $row['board'],
             'register_no' => $row['regno'],
             'standard' => $row['std'],
             'section' => $row['sec'],
             'name' => $row['name'],
-            'dob' => date('Y-m-d', strtotime($row['dob'])),
+            'gender' => $row['gender'],
+            'dob' => $row['date_of_birth'],
             'parents_name' => $row['parents'],
             'contact_no' => $row['contact'] ?? null
-        ]);
+         ];
+         
+        return new Student($ins_arr);
     }
 }

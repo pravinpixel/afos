@@ -5,7 +5,7 @@ return [
                     'roles',
                     'settings',
                     'products',
-                    'product_category',
+                    'product-category',
                     'institutes',
                     'locations',
                     'students',

@@ -29,7 +29,7 @@ class ProductCategory extends Model implements Auditable
 
     public function scopeCutoff($query){
         $time = date('H:i:s');
-        return $query->where('cutoff_start_time', '<=', $time )->where('cutoff_end_time', '>=', $time );
+        return $query->whereTime('cutoff_start_time', '<=', $time )->whereTime('cutoff_end_time', '>=', $time );
 
 
     }
