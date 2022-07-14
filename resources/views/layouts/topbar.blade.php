@@ -26,3 +26,7 @@
         </div>
     </div>
 </nav>
+<div class="text-center mt-4" style="font-size: 20px;">
+    <span class="text-secondary">“ Let food be thy medicine, let medicine be thy food ” by</span> 
+    <span class="text-dark"><b>Hippocrates</b></span>.
+</div>
