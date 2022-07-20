@@ -85,10 +85,11 @@ class DashboardController extends Controller
                     ->when($category != '', function($query) use ($category) {
                         $query->where('product_categories.id', $category);
                     })
+                    ->groupBy('students.id')
                     ->orderBy('students.standard')
                     ->orderBy('students.section')
                     ->orderBy('students.name')
-                    ->get();
+                    ->dd();
 
         }
 
